@@ -1,0 +1,103 @@
+<!DOCTYPE HTML>
+
+<html>
+	<head>
+		<title>Flashion Recommender</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+        
+		<link rel="stylesheet" href="{{ url_for('static', filename='assets/css/main3.css') }}">
+        
+
+	</head>
+    <body>
+    		<header id="header" class="alt">
+            <h1><a href="home"><img src="static/images/logo_black.png" alt="" width="130" height="60" /></a></h1>
+				<nav id="nav">
+					<ul>
+						<li><a href="home">Home</a></li> 
+						<li><a href="howitworks">How It Works</a></li>
+					</ul>
+				</nav>
+			</header>
+
+			<a href="#menu" class="navPanelToggle"><span class="fa fa-bars"></span></a>
+            <section id="two" class="wrapper style2 special">
+                <div class="container">
+                    <header class="major">
+                        <h2>AI-Recommender</h2>
+                        <p>Upload the style of clothing you like or pick one style below. <br>Our AI-recommender will return you the famous shopping website <br>with the exact item you want.</p>
+                    </header>
+
+                    <form action='/result' method='POST' enctype="multipart/form-data">
+                        <label> <h3>Upload the image of your favourite clothing here </h3></label>
+                        <input type='file' name='image_input' accept='image/*' class="special">
+                        <input type="submit" value="Submit">
+                    </form>
+
+
+                    <div class="row 150%">
+                        <div class="6u 12u$(xsmall)">
+                            <div class="image fit captioned">
+                                <a href='https://www.zalora.com.hk/women/clothing/?from=header&pattern=Floral&color=black&category_id=25'><img src="static/images/black_floral_dress.jpg" alt="" /></a>
+                                <h3>Sweet Party Floral Dress</h3>
+                            </div>
+                        </div>
+                        
+                        <div class="6u$ 12u$(xsmall)">
+                            <div class="image fit captioned">
+                                <a href='https://www.zalora.com.hk/women/clothing/?from=header&pattern=Checks&color=black&category_id=25'><img src="static/images/black_squared_dress.jpg" alt="" /></a>
+                                <h3>Royal Black Squared Dress</h3>
+                            </div>
+                        </div>
+                         <div class="6u 12u$(xsmall)">
+                            <div class="image fit captioned">
+                                <a href='https://www.zalora.com.hk/women/clothing/?from=header&pattern=Solid&color=blue&category_id=417'><img src="static/images/blue_plain_jeans.jpg" alt="" /></a>
+                                <h3>Sexy Blue Jeans</h3>
+                            </div>
+                        </div>
+                        
+                        <div class="6u$ 12u$(xsmall)">
+                            <div class="image fit captioned">
+                                <a href='https://www.zalora.com.hk/women/clothing/?from=header&pattern=Solid&color=black&category_id=5967'><img src="static/images/black_solid_blazer.jpg" alt="" /></a>
+                                <h3>Woman Blazer in Black</h3>
+                            </div>
+                        </div>
+                         <div class="6u 12u$(xsmall)">
+                            <div class="image fit captioned">
+                                <a href='https://www.zalora.com.hk/women/clothing/?from=header&pattern=Solid&color=green&category_id=5968'><img src="static/images/green_solid_hoodie.jpg" alt="" /></a>
+                                <h3>Oversized Green Hoodie</h3>
+                            </div>
+                        </div>
+                        
+                        <div class="6u$ 12u$(xsmall)">
+                            <div class="image fit captioned">
+                                <a href='https://www.zalora.com.hk/women/clothing/?from=header&pattern=Stripes&color=blue&category_id=25'><img src="static/images/blue_stripe_dress.jpg" alt="" /></a>
+                                <h3>Elegant Blue Striped Dress</h3>
+                            </div>
+                        </div>
+                         <div class="6u 12u$(xsmall)">
+                            <div class="image fit captioned">
+                                <a href='https://www.yoox.com/hk/women/shoponline/vstt_mc#/dept=clothingwomen&gender=D&page=1&color=7&attributes=%7b%27ctgr%27%3a%5b%27vstt%27%5d%2c%27pttrn1%27%3a%5b%27plkdts%27%5d%7d&season=X'><img src="static/images/black_dot_dress.jpg" alt="" /></a>
+                                <h3>Classic Ploka Dots Dress</h3>
+                            </div>
+                        </div>
+                        
+                        <div class="6u$ 12u$(xsmall)">
+                            <div class="image fit captioned">
+                                <a href='https://www.zalora.com.hk/women/clothing/?from=header&pattern=Graphic&color=yellow&category_id=24'><img src="static/images/yellow_graphic_tee.jpg" alt="" /></a>
+                                <h3>Girls T-Shirt in Yellow</h3>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+		<!-- Scripts -->
+			<script src="static/assets/js/jquery.min.js"></script>
+			<script src="static/assets/js/skel.min.js"></script>
+			<script src="static/assets/js/util.js"></script>
+			<script src="static/assets/js/main.js"></script>
+
+	</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE HTML>
+
+<html>
+	<head>
+		<title>Model Architecture</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="{{ url_for('static', filename='assets/css/main3.css') }}">
+	</head>
+	<body>
+
+		<!-- Header -->
+			<header id="header">
+				<h1><strong>How our AI-Recommender works?</strong></h1>
+				<nav id="nav">
+					<ul>
+						<li><a href="home"><img src="static/images/logo_black.png" alt="" width="130" height="60" /></a></li> 
+					</ul>
+				</nav>
+
+			</header>
+
+		<!-- Main -->
+			<section id="main" class="wrapper">	
+				<div class="container">
+					<p><strong>Flashion AI-recommender</strong> is capable of identifying fashion attributes and return similar fashion items. Our recommender is built on three different Convolutional Neutral Networks by adopting the Transfer Learning technique, each  network is able to identify specific attributes, namely the clothing’s category, pattern and color. In the following, we depict the major steps in consolidating the dataset, constructing model and any technique we applied throughout the process.</p>
+					<div>
+					
+						<h2>Data Collection</h2>
+						<p>Firstly, we created our dataset by scraping the fashion images from several online shopping websites and Google according to our designated clothing attributes listed below. Each type of attribute contains a few hundred to thousands of photos for building the attribute classification model.</p>
+						<ul>
+						<li>Categories (10) – blazers, dresses, hoodies & sweatshirts, jacket & coats, jeans, knitwear & cardigans, pants, shorts, skirts, tops</li>
+						<li>Patterns (6) – checks, dots, floral, graphic, solid, stripes</li>
+						<li>Colors (9) – black & white, blue, brown, green, light pink & beige, orange, purple, red & pink, yellow</li>
+						</ul>
+						<img src='static/images/category.jpg' style='width:250px;height:100%'>
+						<img src='static/images/pattern.jpg' style='width:250px;height:100%'>
+						<img src='static/images/color.jpg' style='width:250px;height:100%'>
+						<h4><u>Image Augmentation</u></h4>
+						<p>To increase the variants of the original image, we applied image augmentation by using ImageDataGenerator in Keras. Classic augmentation techniques like flips, rotations, and shears can be easily applied to each image in the training set without manually processing each image. The variations of the training image allow the model to have a better performance.</p>
+					
+					</div>
+
+					<div>
+						<h2>Model Construction</h2>
+						<p>We mainly applied Convolutional Neural Network (CNN) to construct the models. CNN is a class of deep neural networks which is commonly used in analyzing image, while image classification is one of its major applications. The image classification mainly consists of 4 operations – Convolution, Activation Map & Max Pooling, Flattening, and Fully Connected Layer.</p>
+						<h4><u>Convolution</u></h4>
+						<p>The convolutional layer makes use of the filters (also known as kernels and feature detectors), to detect features in images such as edges, lines, etc. Normally, multiple feature detectors are needed to detect different curves/edges. After passing through multiple feature detectors through the image, an output matrix called feature maps are generated.</p>
+						<img src='static/images/convolution.gif' style='width:300px;height:100%'>
+						<h4><u>Activation Map &amp; Max Pooling</u></h4>
+						<p>Since the images contain a background or different objects that are highly non-linear. These feature maps have to pass through some activation function which introduces the non-linearity into our network, one widely applied activation function is called Rectified Linear Unit (ReLu).</p>
+						<p>Max Pooling (also known as down-sampling), is used to get rid of the features that are not relevant in classifying the image, at the same time preserving features that are somehow distorted. Another benefit from max pooling is to pose a regularizing effect on the network to prevent overfitting on training data.</p>
+						<img src='static/images/pooling.gif' style='width:300px;height:100%'>
+						<br>
+						<h4><u>Flattening</u></h4>
+						<p>The pooled features, which are 3-dimensional, will be converted into a single long feature vector before being fed into the multi-layer perception. </p>
+						<h4><u>Fully Connected Layer</u></h4>
+						<p>The fully connected layer focuses on the high-level features, which correlate to a particular class. The weights of such feature and a particular class are adjusted throughout the training, so the model knows which features are highly associated with each class. Then the probability of being a particular class is calculated to make the final prediction.</p>
+					</div>
+
+					<div>
+						<h2>Model Architecture</h2>
+						<p>In constructing the Convolutional Neural Networks, we adopted transfer learning which leverage knowledge from previously trained models (VGG19) for training newer models on specific domains. VGG19 is a state of the art model trained for the ImageNet Large-Scale Visual Recognition Challenge (ILSVRC), consisting over 1 million images as training data. Since the features in Convolutional Neural Networks are more generic in early layers and more original-dataset-specific in later layers. We utilized the pre-trained vgg19 model to extract generic features while training our custom fully-connected classifier to identify more domain specific features. In this case, transfer leaning allows us to train a model with less training data, higher accuracy and at a faster pace.</p>
+					</div>
+
+					<div>
+						<h2>Fine Tuning</h2>
+						<p>In the first attempt, we instantiated the pre-trained vgg19 model and retained the weights for its convolution layers, and added a fully-connected classifier on top. During training, only the weights of the fully-connected classifier are updated. It obtained an accuracy of 58%, 54%, and 52% for identifying the fashion categories, patterns, and colors, respectively.</p>
+						<p>To further improve the performance, we tuned the weights for a few more layers on the pre-trained model such that our model learned high-level features specific to the dataset. Finally, we adjusted the learning rate of the ADAM optimizer and added a few more layers in the fully-connected classifier. Ultimately, the accuracy improved to over 60% for categories and colors.</p>
+						<p><strong>Here is the building block of our CNN models:</stong></p>
+						<img src='static/images/vgg_architecture.jpg' width='80%' height='80%'>
+			</section>
+
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/skel.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
