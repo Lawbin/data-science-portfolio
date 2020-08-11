@@ -9,7 +9,7 @@ _Note: Data used in the projects (accessed under data directory) is for demonstr
 
 	- [Predicting US Census Income](https://github.com/Lawbin/data-science-portfolio/blob/master/US%20Census%20Income/ML%20-%20Census%20Income.ipynb):  A model to predict whether an individual makes more than or less than $50k annually. This prediction was based on demographic, education, marital status, working class, and occupation.
 
-	_Tools: scikit-learn, Pandas, Seaborn, Matplotlib
+	_Tools: scikit-learn, Pandas, Seaborn, Matplotlib_
 
 - ### Data Analysis and Visualisation
 	- __Python__
