@@ -13,6 +13,7 @@ _Note: Data used in the projects (accessed under data directory) is for demonstr
 
 - ### Data Analysis and Visualisation
 	- __Python__
+	
 		- [Indeed Webscrape & Analysis](https://github.com/Lawbin/data-science-portfolio/tree/master/Indeed%20Webscrape): Analysis of data scientist jobs available in California, USA from webscraping Indeed.
 		
 	_Tools: Pandas, Seaborn and Matplotlib_
