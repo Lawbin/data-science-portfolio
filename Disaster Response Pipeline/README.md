@@ -5,39 +5,27 @@
 ### A Figure 8 dataset
 
 ### Table of Contents
-1. [Required Libraries](#libraries)
-2. [Introduction](#introduction)
-3. [Files](#files)
-4. [ETL Pipeline](#ETL)
-5. [ML Pipeline](#ML)
-6. [Flask Web App](#Flask)
-7. [Plot Demos](#demo1)
-8. [Classification Demo](#demo2)
-9. [Licensing, Authors, and Acknowledgements](#licensing)
+1. [Introduction](#introduction)
+2. [Dependencies](#libraries)
+3. [ETL Pipeline](#ETL)
+4. [ML Pipeline](#ML)
+5. [Installation](#install)
+6. [Executing Program](#execution)
+7. [Licensing, Authors, and Acknowledgements](#licensing)
+8. [Screenshots](#screenshots)
 
+## 1. Introduction <a name="introduction"></a>
+This Project is part of [Udacity's](https://www.udacity.com/) Data Science Nanodegree Program in collaboration with Figure Eight. The dataset contains pre-labelled messages from real-life disaster events. The project involves building a Natural Language Processing (NLP) model to categorize messages on a real time basis.
 
-## 1. Required Libraries <a name="libraries"></a>
-Besides the libraries included in the Anaconda distribution for Python 3.6 the following libraries have been included in this project:
-* `nltk` 
-* `sqlalchemy` 
+## 2. Dependencies <a name="libraries"></a>
+* Python 3.6
+* ETL: `pandas`, `numpy`, `seaborn`, `matplotlib`, `sqlalchemy`
+* Machine Learning: ETL Libraries, `re` (regex), `scikit-learn`
+* Natural Language Processing: `nltk`
+* Model Loading and Saving: Pickle
+* Model Deployment: Flask
 
-
-## 2. Introduction <a name="introduction"></a>
-[Figure 8](https://www.figure-eight.com/) helps companies transform they data by providing human annotators and machine learning to annotate data at all scales.
-Disaster response is one of events that greatly benefits from data and machine learning modeling. In this project I propose an approach to social media messages annotation.
-NLP allows the extraction of great significance in text, understanding how a model classifies and predicts needed responses in disaster cases provides good understanding of the power of words in functional responses.
-
-In this project I will be using a data set containing messages that were sent during disaster events and build a classifier to identify messages or events in need of attention or relief.
-The data cleaning and model building will be using pipelines, automating repetitive steps, and preventing data leakage.
-
-The best performing machine learning model will be deployed as a web app where the user can test their own tentative messages to see how they would be classified with the models I selected and trained. 
-Through the web app the user can also consult visualizations of the clean and transformed data.
-
-
-## 3. Files <a name="files"></a>
-Data was downloaded from [Figure 8](https://www.figure-eight.com/dataset/combined-disaster-response-data/).
-
-#### 4. ETL Pipeline <a name="ETL"></a>
+#### 3. ETL Pipeline <a name="ETL"></a>
 
 File _data/process_data.py_ contains data cleaning pipeline that:
 
@@ -46,7 +34,7 @@ File _data/process_data.py_ contains data cleaning pipeline that:
 - Cleans the data
 - Stores it in a **SQLite database**
 
-#### 5. ML Pipeline <a name="ML"></a>
+#### 4. ML Pipeline <a name="ML"></a>
 
 File _models/train_classifier.py_ contains machine learning pipeline that:
 
@@ -57,26 +45,40 @@ File _models/train_classifier.py_ contains machine learning pipeline that:
 - Outputs result on the test set
 - Exports the final model as a pickle file
 
-#### 6. Flask Web App <a name="Flask"></a>
+## 5. Installation <a name="install"></a>
+To clone the reponsitory:
+```
+git clone https://github.com/Lawbin/Disaster-Response-Pipeline.git
+```
 
-Run the following commands in the project's root directory to set up your database and model.
+#### 6. Executing Program <a name="execution"></a>
 
-To run ETL pipeline that cleans data and stores in database python:
-data/process_data.py data/disaster_messages.csv data/disaster_categories.csv data/DisasterResponse.db 
+1. You can run the following commands in the project's directory to set up the database, train model and save the model.
 
-To run ML pipeline that trains classifier and saves python 
-models/train_classifier.py data/DisasterResponse.db models/classifier.pkl 
+    - To run the ETL pipeline to clean data and store the processed data in the database
+        `python data/process_data.py data/disaster_messages.csv data/disaster_categories.csv data/disaster_response_db.db`
+    - To run the ML pipeline that loads data from DB, trains classifier and saves the classifier as a pickle file
+        `python models/train_classifier.py data/disaster_response_db.db models/classifier.pkl`
 
-Run the following command in the app's directory to run your web app 
-python run.py
-
-Go to http://0.0.0.0:3001/
+2. Run the following command in the app's directory to run your web app.
+    `python run.py`
 
 Notebooks
-ETL Pipeline Prep.ipynb - jupyter notebook for data exploration and cleaning
-ML Pipeline Preparation - jupyter notebook for model selection and evaluation
+**ETL Pipeline Preparation.ipynb** - jupyter notebook to learn about the implemented ETL pipeline.
+**ML Pipeline Preparation** - jupyter notebook for the machine learning pipeline developed using libraries, `nltk` and `scikit-learn`.
 
+## 7. Licensing, Authors, Acknowledgements<a name="licensing"></a>
+* [Udacity](https://www.udacity.com/) for providing an amazing Data Science Nanodegree Program.
+* [Figure Eight](https://www.figure-eight.com/) for providing the relevant dataset to train the model.
 
+## 8. Screenshots <a name="screenshots"></a>
 
-## 9. Licensing, Authors, Acknowledgements<a name="licensing"></a>
-I am greatly thankful for the incredible challenge provided by Udacity.
+1. This is an example of a message we can type to test the performance of the model
+
+![Sample Input](screenshots/sample_input.png)
+
+2. After clicking **Classify Message**, we can see the categories which the message belongs to highlighted in green
+
+![Sample Output](screenshots/sample_output.png)
+
+3. The main page shows some graphs about training dataset, provided by Figure Eight
